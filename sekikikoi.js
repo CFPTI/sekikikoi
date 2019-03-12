@@ -43,3 +43,9 @@ function init(){
 
     var app = new Vue({ el: '#sekikikoiApp' })
 }
+
+/*
+click
+google.visualization.events.addListener(chart, 'select', function() {
+    console.log("select cat " + chart.getSelection());
+});*/
