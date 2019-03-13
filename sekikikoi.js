@@ -13,6 +13,7 @@ function init(){
     var musicChart = Vue.component('music-chart', {
         data : function() {
             return {
+                isChartHidden:false,
                 refChartData : google.visualization.arrayToDataTable([
                     ['Catégorie', 'Nb de références'],
                     ['Musique',     11],
@@ -38,10 +39,25 @@ function init(){
         mounted: function() {
             this.refChart = new google.visualization.PieChart(document.getElementById(this.refChartId));
             this.refChart.draw(this.refChartData, this.refChartOptions);
+            var that = this;
+            google.visualization.events.addListener(this.refChart, 'select', function() {
+                console.log("select cat " + that.refChart.getSelection());
+                showPage('detailRef');
+            });
+        },
+        showPage : function(page){
+
         }
     });
 
-    var app = new Vue({ el: '#sekikikoiApp' })
+    var app = new Vue({
+        el:'#sekikikoiApp',
+        methods: {
+            showChart:function() {
+                musicChart.props.isChartHidden = false;
+            }
+        }
+    });
 }
 
 /*
