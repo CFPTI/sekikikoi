@@ -21,4 +21,4 @@ function getTitleByName($name){
   return($array);
 }
 
-getTitleByName();
+getTitleByName("Nés sous la même étoile");
