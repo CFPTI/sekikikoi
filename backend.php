@@ -4,6 +4,28 @@
  */
 header('Content-type: application/json');
 
+$methodeName = null;
+$titleName = null;
+$titleId = 42; //make getter
+
+/**
+ * Description : Get the name of the methode to call and the title to search
+ */
+if(isset($_GET["methodName"])){
+    $methodeName = $_GET["methodName"];
+    
+    if(isset($_GET["title"])){
+      $titleName = $_GET["title"];
+      if($methodeName == "getTitleName"){
+        echo getTitleByName($titleName);
+      }
+    }
+    
+    if($methodeName == "getAllRefsByTitleId"){
+      echo getAllRefsByTitleId($titleId);
+    }
+  }
+}
 
 /**
  * @name : the name of the title
@@ -11,15 +33,15 @@ header('Content-type: application/json');
  * return-type: json
  */
 function getTitleByName($name){
-  $array = [
+  $mainInfo = [
     "id"=>"14",
-    "name"=>"Nés sous la même étoile",
+    "title"=>"Nés sous la même étoile",
     "artise"=> "Iam",
     "link"=>"https://open.spotify.com/track/66ZtqKhYSA8XyPr0aAUFsm",
     "release_date"=> "2017-05-26"
   ];
 
-  return($array);
+  return json_encode($mainInfo);
 }
 
 /***
