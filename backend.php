@@ -24,7 +24,6 @@ if(isset($_GET["methodName"])){
     if($methodeName == "getAllRefsByTitleId"){
       echo getAllRefsByTitleId($titleId);
     }
-  }
 }
 
 /**

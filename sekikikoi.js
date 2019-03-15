@@ -1,7 +1,6 @@
 window.onload = function() {
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(init);
-    //init();
 };
 
 function init(){
@@ -11,7 +10,7 @@ function init(){
     });
 
     var musicChart = Vue.component('music-chart', {
-        data : function() {
+        data() {
             return {
                 isChartHidden:false,
                 refChartData : google.visualization.arrayToDataTable([
@@ -36,24 +35,32 @@ function init(){
             }
         },
         template:  '<div :id="refChartId" style="width: 900px; height: 500px;"></div>',
-        mounted: function() {
-            var that = this;
-            $.ajax ({
-               url:"./backend.php",
-               data: {"methodName:getAllRefsByTitleId"},
-                success: function(data){
-                   that.refChartData = JSON.parse(data);
-                   that.refChart = new google.visualization.PieChart(document.getElementById(this.refChartId));
-                   that.refChart.draw(this.refChartData, this.refChartOptions);
-                }
-            });
-            google.visualization.events.addListener(this.refChart, 'select', function() {
+        mounted() {
+           
+            /*google.visualization.events.addListener(this.refChart, 'select', function() {
                 console.log("select cat " + that.refChart.getSelection());
                 showPage('detailRef');
-            });
+            });*/
+            this.initChart();
         },
-        showPage : function(page){
+        methods:{
+            showPage : function(page){
 
+            },
+            initChart(){
+                var that = this;
+                $.ajax ({
+                    url:"./backend.php",
+                    data: {"methodName":"getAllRefsByTitleId"},
+                    success: (data) => {
+                        console.log(data);
+                        data = new google.visualization.DataTable(data);
+                        that.refChartData = data;
+                        that.refChart = new google.visualization.PieChart(document.getElementById(that.refChartId));
+                        that.refChart.draw(that.refChartData, that.refChartOptions);
+                    }
+                });
+            }
         }
     });
 
