@@ -37,9 +37,16 @@ function init(){
         },
         template:  '<div :id="refChartId" style="width: 900px; height: 500px;"></div>',
         mounted: function() {
-            this.refChart = new google.visualization.PieChart(document.getElementById(this.refChartId));
-            this.refChart.draw(this.refChartData, this.refChartOptions);
             var that = this;
+            $.ajax ({
+               url:"./backend.php",
+               data: {"methodName:getAllRefsByTitleId"},
+                success: function(data){
+                   that.refChartData = JSON.parse(data);
+                   that.refChart = new google.visualization.PieChart(document.getElementById(this.refChartId));
+                   that.refChart.draw(this.refChartData, this.refChartOptions);
+                }
+            });
             google.visualization.events.addListener(this.refChart, 'select', function() {
                 console.log("select cat " + that.refChart.getSelection());
                 showPage('detailRef');
