@@ -41,32 +41,35 @@ function getAllRefsByTitleId($idTitle){
  function getReferencesForTitle($idTitle, $idCategory){
     $refArrays = array();
 
-    $refArray[0] = [
+    $refArrays[0] = [
         "id" => "1",
         "title" => "Goldorak",
         "category" => "Cinema",
         "categoryId" => "3",
+        "typeRef" => "Citation",
         "desc" => "A la fin du morceau, on peut entendre un extrait du deuxième épisode de Goldorak : une phrase prononcée par Actarus, « Mon Dieu, pourquoi ne puis-je vivre comme n'importe quel être humain ? Pourquoi mon destin est-il de ne pouvoir cesser de me battre ? ».",
-        "url" => ""
+        "url" => "#"
     ] ;
 
-    $refArray[1] = [
+    $refArrays[1] = [
         "id" => "2",
         "title" => "Scarface",
         "category" => "Cinema",
         "categoryId" => "3",
         "desc" => "On entend à la toute fin du morceau la phrase « La vie de rêve ». C'est une citation de Tony Montana joué par Al Pacino dans la version française du film Scarface de Brian De Palma. Le personnage prononce cette phrase lors de sa demande d'asile politique aux États-Unis alors qu'il dépeint son quotidien à subir le pouvoir communiste de Cuba qu'il vient de quitter.",
-        "url" => ""
+        "typeRef" => "Citation",
+        "url" => "#"
         ];
 
-        $refArray[2] = [
-            "id" => "3",
-            "title" => "Meurtre à Alcatraz",
-            "category" => "Cinema",
-            "categoryId" => "3",
-            "desc" => "dslafjsa",
-            "url" => ""
-        ];
+    $refArrays[2] = [
+        "id" => "3",
+        "title" => "Meurtre à Alcatraz",
+        "category" => "Cinema",
+        "categoryId" => "3",
+        "typeRef" => "Sample",
+        "desc" => "Le sample de ce morceau est tiré de ce film. Il aparaît à la fin du film notamment",
+        "url" => "#"
+    ];
 
 return json_encode($refArray);
 
