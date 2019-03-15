@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="en">
+
 <head>
     <title>SekeKiKoi</title>
     <link rel="stylesheet" href="css/sekikikoi.css">
@@ -7,29 +8,38 @@
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <script type="text/javascript" src="./sekikikoi.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="vendors/bootstrap-4.3.1-dist/css/bootstrap.css">
+    <script src="vendors/jquery-3.3.1.min.js"></script>
+    <script src="vendors/"></script>
+    <script src="vendors/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
+
 <body>
-<div class="banner">
-TODO
-</div>
+    <div id="wrapper">
+        <nav class="sekikikoi-nav navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <iframe id="music-player" src="https://open.spotify.com/embed/track/66ZtqKhYSA8XyPr0aAUFsm" frameborder="0"
+                data-mce-fragment="1"></iframe>
+        </nav>
 
-<div id="sekikikoiApp">
-    <music-player music-link="https://open.spotify.com/embed/track/66ZtqKhYSA8XyPr0aAUFsm"></music-player>
-    <nav>
-        <!--j'ai la flemme de la faire comme il faut alors en dur-->
-        <a href="detailCine.html">Ciné</a>
-        <a href="detailPolitique.html">Politique</a>
-        <a href="detailMusique.html">Musique</a>
-    </nav>
-    <music-chart></music-chart>
-</div>
+        <div id="sekikikoiApp">
+            <iframe id="music-player" src="https://open.spotify.com/embed/track/66ZtqKhYSA8XyPr0aAUFsm" frameborder="0"
+                data-mce-fragment="1"></iframe>
+            <nav>
+                <!--j'ai la flemme de la faire comme il faut alors en dur-->
+                <a href="detailCine.html">Ciné</a>
+                <a href="detailPolitique.html">Politique</a>
+                <a href="detailMusique.html">Musique</a>
+            </nav>
+            <music-chart></music-chart>
+        </div>
 
 
-<!--div class="spotify-embed">
+        <!--div class="spotify-embed">
         <iframe src="https://open.spotify.com/embed/track/66ZtqKhYSA8XyPr0aAUFsm"
                 width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 </div-->
-
+    </div>
 </body>
+
 </html>
