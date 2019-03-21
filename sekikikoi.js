@@ -23,7 +23,7 @@ function init(){
                 ]),
                 refChartOptions : {
                     legend:"none",
-                    title: 'Références',
+                    title: '',
                     pieSliceText:'label',
                     animation: {
                         duration: 1000,
@@ -35,18 +35,19 @@ function init(){
                 refChartId:"refPieChart"
             }
         },
-        template:  '<div :id="refChartId" style="width: 900px; height: 500px;"></div>',
+        template:  '<div :id="refChartId" style="width: 100%; height: 400px;"></div>',
         mounted: function() {
             this.refChart = new google.visualization.PieChart(document.getElementById(this.refChartId));
             this.refChart.draw(this.refChartData, this.refChartOptions);
             var that = this;
             google.visualization.events.addListener(this.refChart, 'select', function() {
                 console.log("select cat " + that.refChart.getSelection());
-                showPage('detailRef');
+                console.log(that);
+            //    showPage('detailRef');
             });
         },
         showPage : function(page){
-
+            
         }
     });
 

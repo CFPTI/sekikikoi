@@ -1,99 +1,121 @@
 <!DOCTYPE HTML>
-<html>
-<head>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<style>
+<html lang="en">
 
-    .item-card {
-        margin-top:15px;
-        background-color : #303030;
-        opacity:0.9;
-        color : white;
-    }
-.item-card .card-header {
-    background-color : #212121;
-}
-    .item-card .card-body {
-        background-color : #303030;
-    }
+    <head>
+        <title>SekeKiKoi</title>
+        <link rel="stylesheet" href="css/sekikikoi.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+        <script type="text/javascript" src="./sekikikoi.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <link rel="stylesheet" href="vendors/bootstrap-4.3.1-dist/css/bootstrap.css">
+        <script src="vendors/jquery-3.3.1.min.js"></script>
+        <script src="vendors/"></script>
+        <script src="vendors/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="minimal-uiwidth=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
 
-</style>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>   
+        <style>
 
-</head>
-<body>
-<div class="spotify-embed">
-        <source>
-            <source src=""/>
+            .item-card {
+                margin-top:15px;
+                background-color : #303030;
+                opacity:0.9;
+                color : white;
+            }
+            .item-card .card-header {
+                background-color : #212121;
+            }
+            .item-card .card-body {
+                background-color : #303030;
+            }
 
-        </audio>
-</div>
-<!-- Card -->
-<div class="card card-image" style="background-image: url(https://www.liberation.fr/apps/2017/03/iam-micro-argent/social.jpg); background-repeat:no-repeat; background-size: cover;">
+        </style>
+    </head>
+    <body style="background-image: url(https://www.liberation.fr/apps/2017/03/iam-micro-argent/social.jpg); ">
+        <div id="wrapper">
+            <nav class="sekikikoi-nav navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <img  width="320" class="img-fluid d-block mx-auto" src="img/624.png" alt=""/>
+            </nav>
 
-    <!-- Content -->
-    <div class="rgba-black-strong py-5 px-4">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-10 col-xl-8">
-                <div id="accordion">
-                    <div class="card item-card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <i class="fas fa-music"></i>
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Meurtre à Alcatraz, 1995
-                                </button>
-                            </h5>
-                        </div>
+            <div class="container-fluid" id="sekikikoiApp">
+                <iframe id="music-player" src="https://open.spotify.com/embed/track/66ZtqKhYSA8XyPr0aAUFsm" frameborder="0"
+                        data-mce-fragment="1"></iframe>
+                <h1 class="text-center">Référence cinéma</h1>
+                <!-- Card -->
+                <div class="card card-image" style="background-color: indianred">
+                    <!-- Content -->
+                    <div class="rgba-black-strong py-5 px-4">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-10 col-xl-8">
+                                <div id="accordion">
+                                    <div class="card item-card">
+                                        <div class="card-header" id="headingOne">
+                                            <h5 class="mb-0">
+                                                
+                                                <button class="btn btn-link collapsed text-decoration-none btn-block text-white" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                   <i class="fas fa-music"></i> Meurtre à Alcatraz, 1995
+                                                </button>
+                                            </h5>
+                                        </div>
 
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <p>Le sample de ce morceau est tiré de ce film. Il aparaît à la fin du film notamment.</p>
-                                <a href="#" class="btn btn-primary">Voir le film</a></div>
-                        </div>
-                    </div>
-                    <div class="card item-card">
-                        <div class="card-header" id="headingTwo">
-                            <h5 class="mb-0">
-                                <i class="fas fa-quote-right"></i>
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Goldorak
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                            <div class="card-body">
-                                <p>A la fin du morceau, on peut entendre un extrait du deuxième épisode de Goldorak : une phrase prononcée par Actarus,
-                                « Mon Dieu, pourquoi ne puis-je vivre comme n'importe quel être humain ? Pourquoi mon destin est-il de ne pouvoir
-                                    cesser de me battre ? ».</p>
-                                <a href="#" class="btn btn-primary">Voir le film</a></p></div>
-                        </div>
-                    </div>
-                    <div class="card item-card">
-                        <div class="card-header" id="headingThree">
-                            <h5 class="mb-0">
-                                <i class="fas fa-quote-right"></i>
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Scarface
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                            <div class="card-body">
-                                <p> On entend à la toute fin du morceau la phrase « La vie de rêve ». C'est une citation de
-                                Tony Montana joué par Al Pacino dans la version française du film Scarface de Brian De Palma. Le personnage prononce cette phrase lors de sa demande d'asile politique
-                                aux États-Unis alors qu'il dépeint son quotidien à subir le pouvoir communiste de Cuba qu'il vient de quitter.
-                                </p><a href="#" class="btn btn-primary">Voir le film</a>
+                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>Le sample de ce morceau est tiré de ce film. Il aparaît à la fin du film notamment.</p>
+                                                <a href="#" class="btn btn-primary">Voir le film</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="card item-card">
+                                        <div class="card-header" id="headingTwo">
+                                            <h5 class="mb-0">
+                                              
+                                                <button class="btn btn-link collapsed text-decoration-none btn-block text-white" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                    <i class="fas fa-quote-right"></i>  Goldorak
+                                                </button>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>A la fin du morceau, on peut entendre un extrait du deuxième épisode de Goldorak : une phrase prononcée par Actarus,
+                                                    « Mon Dieu, pourquoi ne puis-je vivre comme n'importe quel être humain ? Pourquoi mon destin est-il de ne pouvoir
+                                                    cesser de me battre ? ».</p>
+                                                <a href="#" class="btn btn-primary">Voir le film</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card item-card">
+                                        <div class="card-header" id="headingThree">
+                                            <h5 class="mb-0">
+                                              
+                                                <button class="btn btn-link collapsed text-decoration-none btn-block text-white" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                    <i class="fas fa-quote-right"></i>  Scarface
+                                                </button>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p> On entend à la toute fin du morceau la phrase « La vie de rêve ». C'est une citation de
+                                                    Tony Montana joué par Al Pacino dans la version française du film Scarface de Brian De Palma. Le personnage prononce cette phrase lors de sa demande d'asile politique
+                                                    aux États-Unis alors qu'il dépeint son quotidien à subir le pouvoir communiste de Cuba qu'il vient de quitter.
+                                                </p><a href="#" class="btn btn-primary">Voir le film</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-<!-- Card -->
-
-</body>
+                <!-- Card -->
+            </div>
+        </div>
+    </body>
 </html>
