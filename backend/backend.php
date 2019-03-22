@@ -7,8 +7,7 @@ header('Content-type: application/json');
 
 $methodeName = null;
 $titleName = null;
-$titleId = 42; //make getter
-
+$titleId = 1; //make getter
 
 /**
  * Description : Get the name of the methode to call and the title to search
@@ -56,7 +55,7 @@ function getTitleByName($name){
 function getAllRefsByTitleId($idMedia){
 
     $pdoStmt = EDatabase::prepare("
-    SELECT COUNT(category.id_category), category.name
+    SELECT COUNT(category.id_category) AS number, category.name
     FROM `reference`, `media`, `category`
     WHERE id_media_ref = id_media
     AND media.id_category = category.id_category

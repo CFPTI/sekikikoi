@@ -15,16 +15,19 @@
         <div class="m-scene no-padding" id="wrapper">
             <div class="m-detail-layout">
                 <div class="m-aside scene_element scene_element--fadeinright">
-                    <nav class="sekikikoi-nav no-padding navbar navbar-expand-md fixed-top container-fluid bg-dark" style="background-color: whitesmoke">
+
+                    <nav class="navbar navbar-expand-md fixed-top container-fluid bg-dark no-padding" style="background-color: whitesmoke">
                         <div class="row">
                             <div class="col-12">
-                                <img class="d-block mx-auto" id="imgTitle" height="80px" src="img/title.png"/>
+                                <img class="d-block mx-auto" id="imgTitle" height="80" src="img/title.png" alt=""/> 
+
                             </div>
-                        </div>
+                            <div class="col-12" style="height: 0px;">
+                                <iframe id="music-player" src="https://open.spotify.com/embed/track/66ZtqKhYSA8XyPr0aAUFsm" frameborder="0" data-mce-fragment="1"></iframe>
+                            </div>
                     </nav>
                     <div class="container-fluid no-padding">
                         <div class="col-md-12 no-padding">
-                            <iframe id="music-player" src="https://open.spotify.com/embed/track/66ZtqKhYSA8XyPr0aAUFsm" frameborder="0" data-mce-fragment="1"></iframe>
                             <h1 class="text-center">SEKIKIKOI ?</h1>
                             <div id="refChart" style="width: 100%; min-height: 450px"></div>
                         </div>

@@ -56,12 +56,17 @@
                 border-top-right-radius: 0.25rem!important;
                 border-bottom-right-radius: 0.25rem!important;
             }
+            #sekikikoiApp
+            {
+                padding-left: 0px;
+                padding-right: 0px;
+            }
         </style>
     </head>
     <body onload="loadChart();">
-        <div  class="detail m-scene"  id="wrapper">
+        <div  class="detail m-scene container-fluid"  id="wrapper">
             <div class="m-detail-layout">
-                <nav class="sekikikoi-nav navbar navbar-expand-md fixed-top container-fluid bg-dark" style="background-color: whitesmoke">
+                <nav class="navbar navbar-expand-md fixed-top container-fluid bg-dark no-padding" style="background-color: whitesmoke">
                     <div class="row">
                         <div class="col-12">
                             <img class="d-block mx-auto" id="imgTitle" height="80" src="img/title.png" alt=""/> 
@@ -150,13 +155,13 @@
                             </div>
                         </div>
                         <!-- Card -->
-                  
-                             <div id="refChart" style="width: 98vw; height: 60vh;"></div>
-                      
+
+                        <div id="refChart" style="width: 98vw; height: 45vh;"></div>
+
                     </div>
                 </div>
             </div>
         </div>
-                    <script type="text/javascript" src="./sekikikoi.js"></script>
+        <script type="text/javascript" src="./sekikikoi.js"></script>
     </body>
 </html>
