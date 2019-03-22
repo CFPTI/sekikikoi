@@ -27,10 +27,11 @@ function drawChart(dataArray) {
         title: '',
         pieSliceText: 'label',
         animation: {
-            duration: 1000,
-            easing: 'in',
+            duration: 4000,
+            easing: "out",
             startup: true
-        }
+        },
+        backgroundColor: { fill:'transparent' }
     };
     var refChart = null;
     var refChartId = "refChart";
