@@ -37,10 +37,10 @@ function init(){
         template:  '<div :id="refChartId" style="width: 900px; height: 500px;"></div>',
         mounted() {
            
-            /*google.visualization.events.addListener(this.refChart, 'select', function() {
+            google.visualization.events.addListener(this.refChart, 'select', function() {
                 console.log("select cat " + that.refChart.getSelection());
                 showPage('detailRef');
-            });*/
+            });
             this.initChart();
         },
         methods:{

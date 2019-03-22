@@ -50,18 +50,31 @@
             <div class="container-fluid" id="sekikikoiApp">
                 <iframe id="music-player" src="https://open.spotify.com/embed/track/66ZtqKhYSA8XyPr0aAUFsm" frameborder="0"
                         data-mce-fragment="1"></iframe>
-                <h1 class="text-center">Référence cinéma</h1>
+                              <button onclick="addNode(400)">AddNodes</button>
+                <button onclick="addEdges(400,1)">AddEdges</button>
                 <div id="mynetwork" style="height: 500px"></div>
-
             </div>
         </div>
         <script type="text/javascript">
+            var nodes; 
+            var edges;
+            function addNode(id) {
+                nodes.add({id: id, label: "I'm new!"});
+            }
+            function removeNode(randomNodeId) {
+                nodes.remove({id: randomNodeId});
+               // nodeIds.splice(index, 1);
+            }
+            function addEdges(id1,id2)
+            {
+                edges.add({from: id1, to: id2});
+            }
             function loadGraph()
             {
-
-
                 // create an array with nodes
-                var nodes = new vis.DataSet([
+                 nodes = new vis.DataSet([
+                    {id: 221, widthConstraint: 100, heightConstraint: 100, label: '...this too'},
+                    {id: 200, label: 'Salut', shape: 'circularImage', image: 'img/cine.jpg'},
                     {id: 1, label: 'Musique', color: 'lime'},
                     {id: 2, label: 'Politique', color: 'rgb(255,168,7)'},
                     {id: 3, label: 'Autre', color: '#7BE141'},
@@ -72,9 +85,10 @@
                 ])
 
                 // create an array with edges
-                var edges = new vis.DataSet([
+                edges = new vis.DataSet([
                     {from: 1, to: 3},
                     {from: 1, to: 2},
+                    {from: 200, to: 1},
                     {from: 7, to: 4},
                     {from: 7, to: 5},
                     {from: 7, to: 6},
@@ -97,7 +111,6 @@
                         }
                     },
                     nodes: {
-                        shape: 'node',
                         margin: 10,
                         shadow: true,
                         heightConstraint: 50,
