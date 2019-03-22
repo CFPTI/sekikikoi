@@ -55,18 +55,7 @@ function getTitleByName($name){
  */
 function getAllRefsByTitleId($idTitle){
 
-    $refArray = [
-        "Musique" => "11",
-        "Cinéma" => "6",
-        "Politique" => "2",
-        "Autre" => ""
-    ];
-
-    return json_encode($refArray);
-    }
-
- function getReferencesForTitle($idMedia){
-   $pdoStmt = EDatabase::prepare("
+    $pdoStmt = EDatabase::prepare("
     SELECT COUNT(id_catergory), category.name
     FROM `reference`, `media`, `category`
     WHERE id_media_ref = id_media
@@ -75,10 +64,16 @@ function getAllRefsByTitleId($idTitle){
     GROUP BY (id_catergory)
    ");
    $pdoStmt->bindParam(':idMedia', $idMedia, PDO::PARAM_INT);
-  //  $pdoStmt->bindParam(':idMedia', $idMedia, PDO::PARAM_INT);
    $pdoStmt->execute();
-   $refArrays = $pdoStmt->fetchAll(PDO::FETCH_ASSOC);
-   return json_encode($refArrays);
+   $refArray = $pdoStmt->fetchAll(PDO::FETCH_ASSOC);
+   return json_encode($refArray);
+  }
+
+ function getReferencesForTitle($idMedia){
+ /* $pdoStmt = EDatabase::prepare("");
+  $pdoStmt->bindParam(':idMedia', $idMedia, PDO::PARAM_INT);
+  $pdoStmt->execute();
+ */
     /*$refArrays = array();
 
     $refArrays[0] = [
