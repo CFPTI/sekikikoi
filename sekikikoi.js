@@ -1,25 +1,16 @@
-$(document).ready(function() {
-    google.charts.load('current', {'packages': ['corechart']});
-    google.charts.setOnLoadCallback(callCategory);
- 
-    function callCategory()
-    {
-        $.ajax({
-            url: "backend/backend.php",
-            type: "GET",
-            data: {
-                "methodName": "getAllRefsByTitleId",
-            },
-            success: function (result) {
-                console.log(result);
-                drawChartDb(result);
-        },
-        error: function(error){
-            console.log(error);
-        }
-    });
+
+$(document).ready(function () {
+    // let dataClone;
+    //var refChart = null;
+
+    function manageChartCLick(refChart, dataArray) {
+        window.location = "./detailRef.html?cat=" + dataArray[refChart.getSelection()[0].row].id_category + "&idTitle=1";
     }
-    
+
+    google.charts.load('current', {'packages': ['corechart']});
+    google.charts.setOnLoadCallback(function () {
+        loadChartCallback();
+    });
     function callDetail()
     {
         $.ajax({
@@ -33,10 +24,35 @@ $(document).ready(function() {
             success: function (result) {
                 drawModel(result[0].name);
                 drawAllDetail(result);
-        }});
+            }});
     }
-    
+    function loadChartCallback() {
+        let getChartData = new Promise(function (resolve, reject) {
+            $.ajax({
+                url: "backend/backend.php",
+                type: "GET",
+                data: {
+                    "methodName": "getAllRefsByTitleId",
+                },
+                success: function (result) {
+
+                    resolve(result);
+                }});
+        });
+
+
+
+        getChartData.then(function (data) {
+            drawChart(data);
+        });
+    }
+
     function drawChart(dataArray) {
+        dataClone = dataArray;
+        var chartData = [];
+        for (var k of dataArray) {
+            chartData.push([k.name, parseInt(k.numberOfRef)]);
+        }
 
         var refChartOptions = {
             legend: "none",
@@ -49,36 +65,23 @@ $(document).ready(function() {
             },
             backgroundColor: {fill: 'transparent'}
         };
-        var refChart = null;
+
         var refChartId = "refChart";
 
         var refChartData = new google.visualization.DataTable();
         refChartData.addColumn('string', 'Catégorie');
         refChartData.addColumn('number', 'Nb de références');
 
-        refChartData.addRows(dataArray);
+        refChartData.addRows(chartData);
 
-        refChart = new google.visualization.PieChart(document.getElementById(refChartId));
+        //initDrawChart = new Promise(function(resolve, reject){
+        var refChart = new google.visualization.PieChart(document.getElementById(refChartId));
         refChart.draw(refChartData, refChartOptions);
-        return refChart;
-    }
-
-    function drawChartDb(json)
-    {
-        var array = [];
-        for (var k of json)
-            array.push([k.name, parseInt(k.number)]);
-        console.log(array);
-
-        var myChart = drawChart(array);
-
-        google.visualization.events.addListener(myChart, 'select', function () {
-             console.log(myChart.getSelection());
-       //     window.location = "./detailPolitique.html?cat=" + json[myChart.getSelection()[0].row][0];
+        google.visualization.events.addListener(refChart, 'select', function () {
+            manageChartCLick(refChart, dataArray);
         });
 
     }
-
     String.prototype.format = function () {
         a = this;
         for (k in arguments) {
@@ -108,7 +111,7 @@ $(document).ready(function() {
             '<label class="btn btn-secondary labelOriented">{0}</label>'.format(label),
             '<label class="btn btn-secondary btn-block">',
             '<button class="btn btn-link collapsed text-decoration-none text-white btn-block" data-toggle="collapse" data-target="#collapse{0}" aria-expanded="true" aria-controls="collapse{1}">'.format(id, id),
-            '{0} {1}</button>'.format(icon,nom),
+            '{0} {1}</button>'.format(icon, nom),
             '</label>',
             '</div>',
             '<div id="collapse{0}" class="collapse" aria-labelledby="heading{1}" data-parent="#accordion">'.format(id, id),
@@ -140,6 +143,6 @@ $(document).ready(function() {
         ].join("\n");
         $("#sekikikoiApp").append(html);
     }
-       callDetail();
-      
+    callDetail();
+
 });
