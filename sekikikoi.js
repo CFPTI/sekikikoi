@@ -1,7 +1,7 @@
-$( document ).ready(function() {
+$(document).ready(function() {
     google.charts.load('current', {'packages': ['corechart']});
     google.charts.setOnLoadCallback(callCategory);
-
+ 
     function callCategory()
     {
         $.ajax({
@@ -12,6 +12,20 @@ $( document ).ready(function() {
             },
             success: function (result) {
                 drawChartDb(result);
+        }});
+    }
+    
+    function callDetail()
+    {
+        $.ajax({
+            url: "backend/backend.php",
+            type: "GET",
+            data: {
+                "methodName": "getReferencesForTitle",
+            },
+            success: function (result) {
+                drawModel(result[0].name);
+                drawAllDetail(result);
         }});
     }
     
@@ -70,28 +84,31 @@ $( document ).ready(function() {
     function drawAllDetail(json)
     {
         for (var i = 0; i < json.length; i++) {
-            drawAllDetail(json[i], i);
+            drawDetail(json[i], i);
         }
     }
 
     function drawDetail(json, id)
     {
-        var nom = json.name;
-        var text = json.text;
-        
+        console.log(json);
+        var nom = json.titre;
+        var text = json.description;
+        var icon = json.icon_type;
+        var label = json.label;
+        var src = json.url;
         var htmlDiv = ['<div class="card item-card">',
             '<div class="card-header" id="heading{0}">'.format(id),
             ' <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">',
-            '<label class="btn btn-secondary labelOriented">Sample</label>',
+            '<label class="btn btn-secondary labelOriented">{0}</label>'.format(label),
             '<label class="btn btn-secondary btn-block">',
             '<button class="btn btn-link collapsed text-decoration-none text-white btn-block" data-toggle="collapse" data-target="#collapse{0}" aria-expanded="true" aria-controls="collapse{1}">'.format(id, id),
-            '<i class="fas fa-quote-right"></i>{0}</button>'.format(nom),
+            '{0} {1}</button>'.format(icon,nom),
             '</label>',
             '</div>',
             '<div id="collapse{0}" class="collapse" aria-labelledby="heading{1}" data-parent="#accordion">'.format(id, id),
             '<div class="card-body">',
             '<p>{0}</p>'.format(text),
-            '<a href="#" class="btn btn-primary">Voir le film</a>',
+            '<a href="{0}" class="btn btn-primary">Voir la source</a>'.format(src),
             '</div>',
             '</div>',
             '</div>',
@@ -99,11 +116,10 @@ $( document ).ready(function() {
         $("#accordion").append(htmlDiv);
     }
 
-    function drawModel()
+    function drawModel(title)
     {
-        var title = "Référence Cinéma";
         var html = [
-            '<h1 class="text-center">{0}</h1>'.format(title),
+            '<h1 class="text-center">Référence {0}</h1>'.format(title),
             '<div class="card card-image" style="background-color: rgba(255, 0, 0, 0.1);">',
             '<div class="py-5 px-4">',
             '<div class="row d-flex justify-content-center">',
@@ -118,4 +134,6 @@ $( document ).ready(function() {
         ].join("\n");
         $("#sekikikoiApp").append(html);
     }
+       callDetail();
+      
 });

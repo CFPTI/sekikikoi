@@ -56,7 +56,7 @@ function getAllRefsByTitleId($idMedia){
 
     $pdoStmt = EDatabase::prepare("
     SELECT COUNT(category.id_category) AS number, category.name
-    FROM `reference`, `media`, `category`
+    FROM `reference`, `media`, `category` 
     WHERE id_media_ref = id_media
     AND media.id_category = category.id_category
     AND `id_media_base` = :idMedia
@@ -69,9 +69,10 @@ function getAllRefsByTitleId($idMedia){
   }
 
  function getReferencesForTitle($idMedia, $idCategory){
-  $pdoStmt = EDatabase::prepare("Select * from reference, media, category where 
+  $pdoStmt = EDatabase::prepare("Select * from reference, media, category , type_reference where 
   id_media_ref = id_media
   AND media.id_category = category.id_category 
+    AND reference.id_type_reference = type_reference.id_type_reference
   AND id_media_base = :idMedia
   AND category.id_category = :idCategory");
 
