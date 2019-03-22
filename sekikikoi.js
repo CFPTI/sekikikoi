@@ -12,7 +12,11 @@ $( document ).ready(function() {
             },
             success: function (result) {
                 drawChartDb(result);
-        }});
+        },
+        error: function(error){
+            console.log(error);
+        }
+    });
     }
     
     function drawChart(dataArray) {
