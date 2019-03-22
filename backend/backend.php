@@ -6,7 +6,7 @@ require_once("EDatabase.php");
 header('Content-type: application/json');
 
 $methodeName = null;
-$titleName = null;
+$titleName = 'étoile';
 $titleId = 1; //make getter
 
 /**
@@ -14,12 +14,12 @@ $titleId = 1; //make getter
  */
 if(isset($_GET["methodName"])){
     $methodeName = $_GET["methodName"];
-    if(isset($_GET["title"])){
-      $titleName = $_GET["title"];
-      if($methodeName == "getTitleName"){
+   // if(isset($_GET["title"])){
+    //  $titleName = $_GET["title"];
+      if($methodeName == "getTitleByName"){
         echo getTitleByName($titleName);
       }
-    }
+    //}
     
     if($methodeName == "getAllRefsByTitleId"){
       echo getAllRefsByTitleId($titleId);
@@ -37,15 +37,19 @@ if(isset($_GET["methodName"])){
  * return-type: json
  */
 function getTitleByName($name){
-  $mainInfo = [
-    "id"=>"14",
-    "title"=>"Nés sous la même étoile",
-    "artise"=> "Iam",
-    "link"=>"https://open.spotify.com/track/66ZtqKhYSA8XyPr0aAUFsm",
-    "release_date"=> "2017-05-26"
-  ];
+    $pdoStmt = EDatabase::prepare("
+        SELECT *
+        FROM `media`
+        WHERE titre LIKE :name
+        ");
+    $name = "%".$name."%";
+    echo "test";
+    $pdoStmt->bindParam(':name', $name, PDO::PARAM_STR);
 
-  return json_encode($mainInfo);
+    $pdoStmt->execute();
+    $mainInfo = $pdoStmt->fetchAll(PDO::FETCH_ASSOC)[0];
+
+    return json_encode($mainInfo);
 }
 
 /***
