@@ -3,7 +3,7 @@ $( document ).ready(function() {
     //var refChart = null;
 
     function manageChartCLick(refChart, dataArray){
-        window.location = "./detailRef.html?cat=" + dataArray[refChart.getSelection()[0].row].id_category + "&idTitle=1";
+        window.location = "./detailMain.html?cat=" + dataArray[refChart.getSelection()[0].row].id_category + "&idMedia=1";
     }
 
     google.charts.load('current', {'packages': ['corechart']});
