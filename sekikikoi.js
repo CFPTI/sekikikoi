@@ -1,25 +1,41 @@
 $( document ).ready(function() {
-    google.charts.load('current', {'packages': ['corechart']});
-    google.charts.setOnLoadCallback(callCategory);
+   // let dataClone;
+    //var refChart = null;
 
-    function callCategory()
-    {
-        $.ajax({
-            url: "backend/backend.php",
-            type: "GET",
-            data: {
-                "methodName": "getAllRefsByTitleId",
-            },
-            success: function (result) {
-                drawChartDb(result);
-        },
-        error: function(error){
-            console.log(error);
-        }
-    });
+    function manageChartCLick(refChart, dataArray){
+        window.location = "./detailRef.html?cat=" + dataArray[refChart.getSelection()[0].row].id_category + "&idTitle=1";
     }
+
+    google.charts.load('current', {'packages': ['corechart']});
+    google.charts.setOnLoadCallback(function(){
+        loadChartCallback();
+    });
+
+    function loadChartCallback(){
+        let getChartData = new Promise(function(resolve, reject){
+            $.ajax({
+                url: "backend/backend.php",
+                type: "GET",
+                data: {
+                    "methodName": "getAllRefsByTitleId",
+                },
+                success: function (result) {
+                    
+                    resolve(result);
+            }});
+        });
     
+        getChartData.then(function(data){
+            drawChart(data);
+        });
+    }
+
     function drawChart(dataArray) {
+        dataClone = dataArray;
+        var chartData = [];
+        for (var k of dataArray){
+            chartData.push([k.name, parseInt(k.numberOfRef)]);
+        }
 
         var refChartOptions = {
             legend: "none",
@@ -32,36 +48,38 @@ $( document ).ready(function() {
             },
             backgroundColor: {fill: 'transparent'}
         };
-        var refChart = null;
+       
         var refChartId = "refChart";
 
         var refChartData = new google.visualization.DataTable();
         refChartData.addColumn('string', 'Catégorie');
         refChartData.addColumn('number', 'Nb de références');
 
-        refChartData.addRows(dataArray);
+        refChartData.addRows(chartData);
 
-        refChart = new google.visualization.PieChart(document.getElementById(refChartId));
+        //initDrawChart = new Promise(function(resolve, reject){
+        var refChart = new google.visualization.PieChart(document.getElementById(refChartId));
         refChart.draw(refChartData, refChartOptions);
-        return refChart;
-    }
-
-    function drawChartDb(json)
-    {
-        var array = [];
-        for (var k of json)
-            array.push([k.name, parseInt(k.number)]);
-        console.log(array);
-
-        var myChart = drawChart(array);
-
-        google.visualization.events.addListener(myChart, 'select', function () {
-            console.log(myChart.getSelection());
-
-            window.location = "./detailPolitique.html?cat=" + dataArray[myChart.getSelection()[0].row][0];
+        google.visualization.events.addListener(refChart, 'select', function() {
+            manageChartCLick(refChart, dataArray);
         });
 
     }
+
+    
+
+    // function drawChartDb(json)
+    // {
+    //     var array = [];
+    //     for (var k of json)
+    //         array.push([k.name, parseInt(k.number)]);
+    //     var myChart = drawChart(array);
+
+    //     google.visualization.events.addListener(myChart, 'select', function () {
+    //         window.location = "./detailPolitique.html?cat=" + dataArray[myChart.getSelection()[0].row][0];
+    //     });
+
+    // }
 
     String.prototype.format = function () {
         a = this;

@@ -1,20 +1,13 @@
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
-        <title>SekeKiKoi</title>
+        <title>Sekikikoi</title>
         <link rel="stylesheet" href="css/sekikikoi.css">
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
-        <script type="text/javascript" src="./sekikikoi.js"></script>
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <link rel="stylesheet" href="vendors/bootstrap-4.3.1-dist/css/bootstrap.css">
-        <script src="vendors/jquery-3.3.1.min.js"></script>
-        <script src="vendors/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="vendors/smoothState/pageTransitions.css">
         <link rel="stylesheet" href="vendors/smoothState/keyframes.css">
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js'></script>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <meta name="viewport" content="minimal-uiwidth=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -63,7 +56,7 @@
             }
         </style>
     </head>
-    <body onload="loadChart();">
+    <body>
         <div  class="detail m-scene container-fluid"  id="wrapper">
             <div class="m-detail-layout">
                 <nav class="navbar navbar-expand-md fixed-top container-fluid bg-dark no-padding" style="background-color: whitesmoke">
@@ -155,13 +148,17 @@
                             </div>
                         </div>
                         <!-- Card -->
-
                         <div id="refChart" style="width: 98vw; height: 45vh;"></div>
 
                     </div>
                 </div>
             </div>
         </div>
+        <script type="text/javascript" src="vendors/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="vendors/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="vendors/smoothState/jquery.smoothState.min.js"></script>
+        <script type="text/javascript" src="./transition.js"></script>
         <script type="text/javascript" src="./sekikikoi.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </body>
 </html>
