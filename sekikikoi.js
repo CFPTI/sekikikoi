@@ -11,6 +11,7 @@ $(document).ready(function() {
                 "methodName": "getAllRefsByTitleId",
             },
             success: function (result) {
+                console.log(result);
                 drawChartDb(result);
         },
         error: function(error){
@@ -26,6 +27,8 @@ $(document).ready(function() {
             type: "GET",
             data: {
                 "methodName": "getReferencesForTitle",
+                "idMedia": 1,
+                "idCategory": 2
             },
             success: function (result) {
                 drawModel(result[0].name);
@@ -70,9 +73,8 @@ $(document).ready(function() {
         var myChart = drawChart(array);
 
         google.visualization.events.addListener(myChart, 'select', function () {
-            console.log(myChart.getSelection());
-
-            window.location = "./detailPolitique.html?cat=" + dataArray[myChart.getSelection()[0].row][0];
+             console.log(myChart.getSelection());
+       //     window.location = "./detailPolitique.html?cat=" + json[myChart.getSelection()[0].row][0];
         });
 
     }
