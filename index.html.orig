@@ -15,6 +15,28 @@
         <div class="m-scene no-padding" id="wrapper">
             <div class="m-detail-layout">
                 <div class="m-aside scene_element scene_element--fadeinright">
+<<<<<<< HEAD
+                    <nav class="sekikikoi-nav navbar navbar-expand-md fixed-top container-fluid bg-dark" style="background-color: whitesmoke">
+                        <div class="row">
+                            <div class="col-12">
+                                <img class="d-block mx-auto" id="imgTitle" height="80" src="img/title.png" alt=""/> 
+
+                            </div>
+                            <div class="col-12" style="height: 0px;">
+                                <iframe id="music-player" src="https://open.spotify.com/embed/track/66ZtqKhYSA8XyPr0aAUFsm" frameborder="0" data-mce-fragment="1"></iframe>
+                            </div>
+                    </nav>
+                    <div class="container-fluid" id="sekikikoiApp">
+                        <h1 class="text-center">SEKIKIKOI ?</h1>
+                        <div id="refChart" style="width: 900px; height: 500px;"></div>
+                        <nav>
+
+                            <!--j'ai la flemme de la faire comme il faut alors en dur-->
+                            <a href="detailCine.html">Ciné</a>
+                            <a href="detailPolitique.html">Politique</a>
+                            <a href="detailMusique.html">Musique</a>
+                        </nav>
+=======
                     <nav class="sekikikoi-nav no-padding navbar navbar-expand-md fixed-top container-fluid bg-dark" style="background-color: whitesmoke">
                         <div class="row">
                             <div class="col-12">
@@ -28,6 +50,7 @@
                             <h1 class="text-center">SEKIKIKOI ?</h1>
                             <div id="refChart" style="width: 100%; min-height: 450px"></div>
                         </div>
+>>>>>>> Responsive index
                     </div>
                 </div>
             </div>

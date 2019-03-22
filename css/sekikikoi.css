@@ -3,13 +3,10 @@
     height: 80px;
     border: none;
 }
-#wrapper , .sekikikoi-nav
+
+.no-padding
 {
     padding: 0 !important;
 }
-#sekikikoiApp
-{
-    padding-top: 184px;
-    padding-left: 0px;
-    padding-right: 0px;
-}
+
+body { padding-top: 80px; }

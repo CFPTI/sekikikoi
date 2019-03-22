@@ -1,15 +1,21 @@
+var dataArray = [
+    ['Musique', 11],
+    ['Cinéma', 2],
+    ['Politique', 2],
+    ['Autre', 2]
+];
+
 window.onload = function() {
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(init);
 };
 
+$(window).resize(function(){
+    drawChart(dataArray);
+});
+
 function init() {
-    var dataArray = [
-        ['Musique', 11],
-        ['Cinéma', 2],
-        ['Politique', 2],
-        ['Autre', 2]
-    ];
+
     var myChart = drawChart(dataArray);
 
     google.visualization.events.addListener(myChart, 'select', function() {
