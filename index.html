@@ -3,6 +3,7 @@
 
     <head>
         <title>SekeKiKoi</title>
+        <script></script>
         <link rel="stylesheet" href="css/sekikikoi.css">
         <link rel="stylesheet" href="vendors/bootstrap-4.3.1-dist/css/bootstrap.css">
         <link rel="stylesheet" href="vendors/smoothState/pageTransitions.css">
@@ -12,6 +13,9 @@
     </head>
 
     <body>
+    <div id="sekikikoiApp">
+           <music-chart></music-chart>
+    </div>
         <div class="detail m-scene" id="wrapper">
             <div class="m-detail-layout">
                 <div class="m-aside scene_element scene_element--fadeinright">
@@ -27,7 +31,9 @@
             </nav>
                     <div class="container-fluid" id="sekikikoiApp">
                         <h1 class="text-center">SEKIKIKOI ?</h1>
+                        <div id="refChart" style="width: 900px; height: 500px;"></div>
                         <nav>
+
                             <!--j'ai la flemme de la faire comme il faut alors en dur-->
                             <a href="detailCine.html">Ciné</a>
                             <a href="detailPolitique.html">Politique</a>
@@ -42,5 +48,8 @@
         <script src="vendors/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="vendors/smoothState/jquery.smoothState.min.js"></script>
         <script type="text/javascript" src="./transition.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script type="text/javascript" src="./sekikikoi.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </body>
 </html>
