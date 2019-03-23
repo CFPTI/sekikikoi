@@ -18,7 +18,7 @@
 body { padding-top: 184px;    
        height: 100%;  
        background-position: center;
-       
+
        background-size: cover;
        background-image: url(../img/bg.png);
 }
@@ -59,7 +59,20 @@ body { padding-top: 184px;
 .iframe-content{
     width: 100%;
 }
+
 #titleRef
 {
     background-color: rgba(230, 0,150 , 0.5);
-}
+
+
+    #btn-footer{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #btn-footer > div {
+        width: 33%;
+    }
