@@ -22,6 +22,18 @@ $(document).ready(function () {
                 "idCategory": myGETParam.cat
             },
             success: function (result) {
+                console.log(myGETParam.cat);
+                switch (parseInt(myGETParam.cat)) {
+                    case 5:
+                        document.body.style.backgroundImage ="url(img/backPoli.jpg)";
+                        break;
+                    case 2:
+                        document.body.style.backgroundImage ="url(img/backCine.jpg)";
+                        break;
+                    case 1:
+                        document.body.style.backgroundImage ="url(img/backMusic.jpg)";
+                        break;
+                }
                 drawModel(result[0].name);
                 drawAllDetail(result);
             }});
@@ -124,7 +136,7 @@ $(document).ready(function () {
     function drawModel(title)
     {
         var html = [
-            ' <h1 class="text-center">Référence {0}</h1>'.format(title),
+            ' <h1 class="text-center text-white">Référence {0}</h1>'.format(title),
             '<div class="row">',
             '<div class="col-12">',
             ' <div class="card card-image" style="background-color: rgba(255, 0, 0, 0.1);">',
