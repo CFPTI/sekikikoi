@@ -54,3 +54,15 @@ body { padding-top: 184px;
 .iframe-content{
     width: 100%;
 }
+
+#btn-footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#btn-footer > div {
+    width: 33%;
+}
