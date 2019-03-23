@@ -138,7 +138,7 @@ $(document).ready(function () {
     function drawModel(title)
     {
         var html = [
-            ' <h1 class="text-center text-white">Référence {0}</h1>'.format(title),
+            ' <h1 id="titleRef" class="mx-auto text-white text-center" style="width: max-content">Référence {0}</h1>'.format(title),
             '<div class="row">',
             '<div class="col-12">',
             ' <div class="card card-image" style="background-color: rgba(255, 0, 0, 0.1);">',
