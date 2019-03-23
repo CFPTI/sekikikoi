@@ -53,11 +53,13 @@ $(document).ready(function () {
             legend: "none",
             title: '',
             pieSliceText: 'label',
+            fontSize: 20,
             animation: {
                 duration: 1000,
                 easing: "out",
                 startup: true
             },
+            chartArea:{width:'90%',height:'100%'},
             backgroundColor: {fill: 'transparent'}
         };
 
@@ -139,7 +141,7 @@ $(document).ready(function () {
             '</div>',
             '<div class="row">',
             '<div class="col-12 no-padding">',
-            ' <div id="refChart" style="width: 100vw; min-height: 350px;"></div>',
+            ' <div id="refChart" style="width: 100vw; min-height: 400px;"></div>',
             ' </div>',
             '</div>'
         ].join("\n");
@@ -155,7 +157,7 @@ $(document).ready(function () {
         }
         return result;
     }
-    
+
     myGETParam = getGetParamFromJs();
     callDetail();
 
