@@ -15,7 +15,12 @@
     padding: 0 !important;
 }
 
-body { padding-top: 184px;       
+body { padding-top: 184px;    
+       height: 100%;  
+       background-position: center;
+       
+       background-size: cover;
+       background-image: url(../img/bg.png);
 }
 
 * {
