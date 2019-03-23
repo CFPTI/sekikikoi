@@ -63,19 +63,19 @@ function getTitleByName($name) {
 function getAllRefsByTitleId($idMedia) {
 
     $pdoStmt = EDatabase::prepare("
-    SELECT COUNT(category.id_category) AS number, category.name
-    FROM `reference`, `media`, `category` 
-    WHERE id_media_ref = id_media
-    AND media.id_category = category.id_category
-    AND `id_media_base` = :idMedia
-    GROUP BY (category.id_category)
-   ");
+
+        SELECT COUNT(category.id_category) AS numberOfRef, category.name, category.id_category
+        FROM `reference`, `media`, `category`
+        WHERE id_media_ref = id_media
+        AND media.id_category = category.id_category
+        AND `id_media_base` = 1
+        GROUP BY (category.id_category)
+    ");
     $pdoStmt->bindParam(':idMedia', $idMedia, PDO::PARAM_INT);
     $pdoStmt->execute();
     $refArray = $pdoStmt->fetchAll(PDO::FETCH_ASSOC);
     return json_encode($refArray);
 }
-
 function getReferencesForTitle($idMedia, $idCategory) {
     $pdoStmt = EDatabase::prepare("Select * from reference, media, category , type_reference where 
   id_media_ref = id_media

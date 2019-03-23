@@ -2,37 +2,16 @@
 <html lang="en">
     <head>
         <title>SekeKiKoi</title>
-        <link rel="stylesheet" href="css/sekikikoi.css">
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
         <link rel="stylesheet" href="vendors/bootstrap-4.3.1-dist/css/bootstrap.css">
-        <script src="vendors/jquery-3.3.1.min.js"></script>
-        <script src="vendors/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="vendors/smoothState/pageTransitions.css">
-        <link rel="stylesheet" href="vendors/smoothState/keyframes.css">
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js'></script>
+        <link rel="stylesheet" href="vendors/smoothState/keyframes.css">   
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-        <!-- Bootstrap core CSS -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Bootstrap core JavaScript -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>   
-        <style>
-
-            .item-card {
-                margin-top:15px;
-                background-color : #303030;
-                opacity:0.9;
-                color : white;
-            }
-            .item-card .card-header {
-                background-color : none;
-            }
-            .item-card .card-body {
-                background-color : none;
-            }   
+        <style>   
             body
             {
                 background-image: url(img/backCine2.jpg); 
@@ -41,32 +20,16 @@
                 background-repeat: no-repeat; 
                 background-size: cover;
             }
-            .labelOriented
-            {
-                border-top-left-radius: 0px;
-                border-bottom-left-radius: 0px;
-                text-orientation: mixed ;
-                writing-mode: vertical-lr;
-                transform: rotate(180deg); 
-                padding: 0;
-                border-top-right-radius: 0.25rem!important;
-                border-bottom-right-radius: 0.25rem!important;
-            }
-            #sekikikoiApp
-            {
-                padding-left: 0px;
-                padding-right: 0px;
-            }
         </style>
+        <link rel="stylesheet" href="css/sekikikoi.css">
     </head>
     <body>
-        <div  class="detail m-scene container-fluid"  id="wrapper">
+        <div class="detail m-scene container-fluid" id="wrapper">
             <div class="m-detail-layout">
                 <nav class="navbar navbar-expand-md fixed-top container-fluid bg-dark no-padding" style="background-color: whitesmoke">
                     <div class="row">
                         <div class="col-12">
                             <img class="d-block mx-auto" id="imgTitle" height="80" src="img/title.png" alt=""/> 
-
                         </div>
                         <div class="col-12" style="height: 0px;">
                             <iframe id="music-player" src="https://open.spotify.com/embed/track/66ZtqKhYSA8XyPr0aAUFsm" frameborder="0" data-mce-fragment="1"></iframe>
@@ -77,6 +40,11 @@
                 </div>
             </div>
         </div>
-            <script type="text/javascript" src="./sekikikoi.js"></script>
+        <script src="vendors/jquery-3.3.1.min.js"></script>
+        <script src="vendors/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>   
+        <script type="text/javascript" src="vendors/smoothState/jquery.smoothState.min.js"></script>
+        <script type="text/javascript" src="./transition.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="./sekikikoi.js"></script>
     </body>
 </html>

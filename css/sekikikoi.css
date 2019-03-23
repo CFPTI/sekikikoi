@@ -10,3 +10,33 @@
 }
 
 body { padding-top: 184px; }
+
+.labelOriented
+{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    text-orientation: mixed ;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg); 
+    padding: 0;
+    border-top-right-radius: 0.25rem!important;
+    border-bottom-right-radius: 0.25rem!important;
+}
+#sekikikoiApp
+{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.item-card {
+    margin-top:15px;
+    background-color : #243030;
+    opacity:0.9;
+    color : white;
+}
+.item-card .card-header {
+    background-color : none;
+}
+.item-card .card-body {
+    background-color : none;
+}  
