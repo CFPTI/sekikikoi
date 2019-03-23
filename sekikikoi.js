@@ -49,7 +49,12 @@ $(document).ready(function () {
                 },
                 success: function (result) {
                     resolve(result);
-                }});
+                },
+                error: function(error){
+                    console.log(error);
+                    reject(error);
+                }
+            });
         });
         getChartData.then(function (data) {
             drawChart(data);
