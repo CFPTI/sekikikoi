@@ -14,8 +14,9 @@ define ('DB_DBTYPE', "mysql");
 // Connexion local
 define("DB_HOST","127.0.0.1");
 define("DB_NAME","sekikikoi");
-define("DB_USER","root");
-define("DB_PASS","");
+define("DB_USER","sekikikoi_admin");
+define("DB_PASS","Super");
+
 
 /**
  * Retourne un objet PDO connecté à la base de données
