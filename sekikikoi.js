@@ -155,7 +155,7 @@ $(document).ready(function () {
         }
         return result;
     }
-
+    
     myGETParam = getGetParamFromJs();
     callDetail();
 
