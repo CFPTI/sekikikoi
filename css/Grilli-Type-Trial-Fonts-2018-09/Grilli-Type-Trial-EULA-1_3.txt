@@ -1,0 +1,24 @@
+Grilli Type Trial Fonts 
+End User License Agreement
+
+Version 1.3 / October 2016
+
+1) This is an agreement between you, the purchaser and licensee, and GrilliType GmbH (hereafter Grilli Type). By requestion, or receiving, or downloading, or installing, or using, or otherwise handling the digital typeface software (hereafter fonts), you accept the terms of this agreement. In accepting the terms of this agreement, you acknowledge understanding and complying with its terms. This agreement replaces and supersedes any previously made oral or written proposal or agreement between you and Grilli Type. If you do not accept the terms, you can not download or request or use the Grilli Type trial fonts (hereafter “fonts”).
+
+2a) You are granted one (1) license to use trial fonts by Grilli Type on a certain number of devices within your organization. You are not receiving the copyright to the design or any other part of the fonts, but the rights to use the fonts as specified in this agreement.
+
+2b) “Within your organization” shall mean usage inside your company or organization, across all your business locations, but shall not include usage by clients or other third parties, including self-employed parties who are working for you but not at one of your business locations. Self-employed third parties temporarily working at one of your business locations on your devices are considered part of your organization.
+
+3) This license allows you to use the fonts on any number of computers within your organization. The license exclusively allows the use for trial purposes, and in non-commercial student project contexts. You may not use the fonts in any final files for any commercial project.
+
+4) You can make archival copies of the fonts for your own purposes, counting additionally to the amount of devices you licensed the fonts for. You shall not distribute the fonts to people outside of your organization. The fonts may be embedded into files of the Portable Document Format (PDF), PostScript (PS), and Encapsulated PostScript (EPS) types, as well as into websites with the @font-face technology. The fonts may not be embedded into any other format under this license.
+
+5) You may not modify the fonts in any case. You may not commission a third party to modify the fonts. Outside of their legal use as described in this license, you may not distribute, lend, rent, sell, give away, publicly or privately share any modified or unmodified version of the fonts
+
+6) We try to produce our fonts to the highest and most up-to-date technical standards. If you do experience any difficulties with our fonts, we will do everything that we can to work with you to resolve any issues. Grilli does not take on any liability in this transaction. You are using the fonts on your own risk.
+
+7) Any breach of the terms and conditions of this agreement terminates your license to use the fonts. After any termination of the agreement you must destroy any copies of the fonts, including your archival copies.
+
+8) Any and all rights not expressly granted in this agreement are reserved to Grilli Type.
+
+9) The agreement shall be governed by and construed in accordance with Swiss law. Place of performance is Zurich, Switzerland. The courts of Zurich, Switzerland shall have jurisdiction.

@@ -4,12 +4,23 @@
     border: none;
 }
 
+@font-face {
+    font-family: myFirstFont;
+    src: url(css/Grilli-Type-Trial-Fonts-2018-09/GT-Eesti-Pro-Display-Trial-Regular.otf);
+}
+
+
 .no-padding
 {
     padding: 0 !important;
 }
 
-body { padding-top: 184px; }
+body { padding-top: 184px;       
+}
+
+* {
+    font-family: myFirstFont;
+}
 
 .labelOriented
 {
