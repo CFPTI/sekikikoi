@@ -22,7 +22,6 @@ $(document).ready(function () {
                 "idCategory": myGETParam.cat
             },
             success: function (result) {
-                console.log(myGETParam.cat);
                 switch (parseInt(myGETParam.cat)) {
                     case 5:
                         document.body.style.backgroundImage ="url(img/backPoli.jpg)";
@@ -35,6 +34,8 @@ $(document).ready(function () {
                         break;
                 }
                 drawModel(result[0].name);
+                
+             //   currentNodes = result;
                 drawAllDetail(result);
             }});
     }
@@ -52,6 +53,7 @@ $(document).ready(function () {
         });
         getChartData.then(function (data) {
             drawChart(data);
+         //   MainNodes = data;
         });
     }
 

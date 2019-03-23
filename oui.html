@@ -3,25 +3,14 @@
     <head>
         <title>SekeKiKoi</title>
         <link rel="stylesheet" href="css/sekikikoi.css">
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
-        <script type="text/javascript" src="./sekikikoi.js"></script>
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <link rel="stylesheet" href="vendors/bootstrap-4.3.1-dist/css/bootstrap.css">
-        <script src="vendors/jquery-3.3.1.min.js"></script>
-        <script src="vendors/"></script>
-        <script src="vendors/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
 
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="minimal-uiwidth=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
 
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-        <!-- Bootstrap core CSS -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <!-- Bootstrap core JavaScript -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>   
+
 
         <script type="text/javascript" src="vendors/vis/dist/vis.js"></script>
         <link href="vendors/vis/dist/vis-network.min.css" rel="stylesheet" type="text/css" />
@@ -42,7 +31,7 @@
 
         </style>
     </head>
-    <body style="/*background-image: url(https://www.liberation.fr/apps/2017/03/iam-micro-argent/social.jpg);*/ " onload="loadGraph()">
+    <body style="/*background-image: url(https://www.liberation.fr/apps/2017/03/iam-micro-argent/social.jpg);*/ " onload="setTimeout(loadGraph,1000)">
         <div id="wrapper">
             <nav class="sekikikoi-nav navbar navbar-expand-md navbar-dark fixed-top bg-dark">
                 <img  width="320" class="img-fluid d-block mx-auto" src="img/624.png" alt=""/>
@@ -50,49 +39,52 @@
             <div class="container-fluid" id="sekikikoiApp">
                 <iframe id="music-player" src="https://open.spotify.com/embed/track/66ZtqKhYSA8XyPr0aAUFsm" frameborder="0"
                         data-mce-fragment="1"></iframe>
-                              <button onclick="addNode(400)">AddNodes</button>
-                <button onclick="addEdges(400,1)">AddEdges</button>
+                <button onclick="addNode(400)">AddNodes</button>
+                <button onclick="addEdges(400, 1)">AddEdges</button>
                 <div id="mynetwork" style="height: 500px"></div>
+                <div id="refChart" style="width: 100vw; min-height:400px;"></div>
             </div>
         </div>
         <script type="text/javascript">
-            var nodes; 
+            var currentNodes;
+            var MainNodes;
+            var nodes;
             var edges;
             function addNode(id) {
                 nodes.add({id: id, label: "I'm new!"});
             }
             function removeNode(randomNodeId) {
                 nodes.remove({id: randomNodeId});
-               // nodeIds.splice(index, 1);
+                // nodeIds.splice(index, 1);
             }
-            function addEdges(id1,id2)
+            function addEdges(id1, id2)
             {
                 edges.add({from: id1, to: id2});
             }
+            function db()
+            {
+                for (var i = 0; i < currentNodes.length; i++) {
+                    var newNodes = {id: currentNodes[i]["id_reference"], label: currentNodes[i]["titre"]};
+                    newNodes.color = "lime";
+                    newNodes.border = "red";
+                    nodes.add(newNodes);
+                    edges.add({from: currentNodes[i]["id_category"] + "c", to: currentNodes[i]["id_reference"]});
+                }
+            }
             function loadGraph()
             {
+
                 // create an array with nodes
-                 nodes = new vis.DataSet([
-                    {id: 221, widthConstraint: 100, heightConstraint: 100, label: '...this too'},
-                    {id: 200, label: 'Salut', shape: 'circularImage', image: 'img/cine.jpg'},
-                    {id: 1, label: 'Musique', color: 'lime'},
-                    {id: 2, label: 'Politique', color: 'rgb(255,168,7)'},
-                    {id: 3, label: 'Autre', color: '#7BE141'},
-                    {id: 4, label: 'Goldorack', color: 'rgba(97,195,238,0.5)'},
-                    {id: 5, label: 'Meurtre à Alcatraz, 1995', color: {background: 'pink', border: 'purple'}},
-                    {id: 6, label: 'Scarface', color: {background: '#F03967', border: '#713E7F', highlight: {background: 'red', border: 'black'}}},
-                    {id: 7, label: 'Cinéma', color: {background: 'cyan', border: 'blue', highlight: {background: 'red', border: 'blue'}, hover: {background: 'white', border: 'red'}}}
+                nodes = new vis.DataSet([
                 ])
 
+
+                for (var i = 0; i < MainNodes.length; i++) {
+                    var newNodes = {id: MainNodes[i]["id_category"] + "c", label: MainNodes[i]["name"], widthConstraint: 100};
+                    nodes.add(newNodes);
+                }
                 // create an array with edges
                 edges = new vis.DataSet([
-                    {from: 1, to: 3},
-                    {from: 1, to: 2},
-                    {from: 200, to: 1},
-                    {from: 7, to: 4},
-                    {from: 7, to: 5},
-                    {from: 7, to: 6},
-                    {from: 4, to: 7},
                 ]);
 
                 // create a network
@@ -117,7 +109,14 @@
                         widthConstraint: 50
                     }};
                 var network = new vis.Network(container, data, options);
+                db();
             }
         </script>
+        <script src="vendors/jquery-3.3.1.min.js"></script>
+        <script src="vendors/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>   
+        <script type="text/javascript" src="vendors/smoothState/jquery.smoothState.min.js"></script>
+        <script type="text/javascript" src="./transition.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="./sekikikoi.js"></script>
     </body>
 </html>
