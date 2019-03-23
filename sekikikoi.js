@@ -11,33 +11,43 @@ $(document).ready(function () {
     google.charts.setOnLoadCallback(function () {
         loadChartCallback();
     });
+    
     function callDetail()
     {
-        $.ajax({
-            url: "backend/backend.php",
-            type: "GET",
-            data: {
-                "methodName": "getReferencesForTitle",
-                "idMedia": myGETParam.idTitle,
-                "idCategory": myGETParam.cat
-            },
-            success: function (result) {
-                switch (parseInt(myGETParam.cat)) {
-                    case 5:
-                        document.body.style.backgroundImage ="url(img/backPoli.jpg)";
-                        break;
-                    case 2:
-                        document.body.style.backgroundImage ="url(img/backCine.jpg)";
-                        break;
-                    case 1:
-                        document.body.style.backgroundImage ="url(img/backMusic.jpg)";
-                        break;
-                }
-                drawModel(result[0].name);
-                
-             //   currentNodes = result;
-                drawAllDetail(result);
+        let getChartDetailData = new Promise(function(resolve, reject){
+            $.ajax({
+                url: "backend/backend.php",
+                type: "GET",
+                data: {
+                    "methodName": "getReferencesForTitle",
+                    "idMedia": myGETParam.idTitle,
+                    "idCategory": myGETParam.cat
+                },
+                success: function (result) {
+                    switch (parseInt(myGETParam.cat)) {
+                        case 5:
+                            document.body.style.backgroundImage ="url(img/backPoli.jpg)";
+                            break;
+                        case 2:
+                            document.body.style.backgroundImage ="url(img/backCine.jpg)";
+                            break;
+                        case 1:
+                            document.body.style.backgroundImage ="url(img/backMusic.jpg)";
+                            break;
+                    }
+                    drawModel(result[0].name);
+                    
+                    resolve(result);
             }});
+        });
+
+        //Draw all detail
+        getChartDetailData.then(function(data){
+            for (var i = 0; i < data.length; i++) {
+                drawDetail(data[i], i);
+            }
+        })
+        
     }
     function loadChartCallback() {
         let getChartData = new Promise(function (resolve, reject) {
@@ -49,7 +59,12 @@ $(document).ready(function () {
                 },
                 success: function (result) {
                     resolve(result);
-                }});
+                },
+                error: function(error){
+                    console.log(error);
+                    reject(error);
+                }
+            });
         });
         getChartData.then(function (data) {
             drawChart(data);
@@ -99,13 +114,6 @@ $(document).ready(function () {
             a = a.replace("{" + k + "}", arguments[k])
         }
         return a
-    }
-
-    function drawAllDetail(json)
-    {
-        for (var i = 0; i < json.length; i++) {
-            drawDetail(json[i], i);
-        }
     }
 
     function drawDetail(json, id)
