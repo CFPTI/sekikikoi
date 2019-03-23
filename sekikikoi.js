@@ -1,15 +1,96 @@
 
 $(document).ready(function () {
-    // let dataClone;
-    //var refChart = null;
+
+    var idShazam = "#shazamContainer";
+    var idC3 = "#c3Container";
+    var idSpotify = "#spotifyContainer";
+
+    function playC3()
+    {
+
+
+        /* $(idShazam).hide();
+         $(idC3).show();
+         $(idSpotify).hide();
+         var auto = "&autoplay=true";
+         if (oui.src.includes(auto))
+         {
+             oui.src = oui.src.replace("&autoplay=true", "");
+         } else
+         {
+             console.log("auto");
+             oui.src += auto;
+         }*/
+    }
+
+    function playSpotify()
+    {
+        $(idShazam).hide();
+        $(idC3).hide();
+        $(idSpotify).show();
+        $.ajax({
+            url: "backend/genius.php",
+            success: function (result) {
+                console.log(result);
+            }});
+    }
+
+    function playShazam()
+    {
+        window.location = "./index.html?&idMedia=17";
+        /* $(idShazam).show();
+         $(idC3).hide();
+         $(idSpotify).hide();
+         $.ajax({
+             url: "backend/genius.php",
+             success: function (result) {
+                 console.log(result);
+             }});*/
+    }
+    $("#btnShazam").click(playShazam);
+
+    function initIndexPage() {
+        var indexParam = getGetParamFromJs();
+
+        if(!indexParam){
+            indexParam = {"idMedia":"1"};//default IAM Nés sous la même étoile
+        }
+
+        var getSearchedMediaData = new Promise(function(resolve, reject) {
+            $.ajax({
+                url: "backend/backend.php",
+                type: "GET",
+                data: {
+                    "methodName": "getTitleById",
+                    "idMedia": indexParam.idMedia
+                },
+                success: function (result) {
+                    resolve(result);
+                    },
+                error: function(error){
+                console.log(error);
+                reject(error);
+            }
+                });
+        });
+
+        getSearchedMediaData.then(function(data){
+            $("#music-player").attr("src", data.url);
+            loadChartCallback(data.id_media);
+        });
+
+
+    }
+
+
     var myGETParam;
-    function manageChartCLick(refChart, dataArray) {
-        window.location = "./detailMain.html?cat=" + dataArray[refChart.getSelection()[0].row].id_category + "&idTitle=1";
+    function manageChartCLick(refChart, dataArray, idMedia) {
+        window.location = "./detailMain.html?cat=" + dataArray[refChart.getSelection()[0].row].id_category + "&idMedia=" + idMedia ;
     }
 
     google.charts.load('current', {'packages': ['corechart']});
     google.charts.setOnLoadCallback(function () {
-        loadChartCallback();
+        initIndexPage();
     });
     
     function callDetail()
@@ -20,7 +101,7 @@ $(document).ready(function () {
                 type: "GET",
                 data: {
                     "methodName": "getReferencesForTitle",
-                    "idMedia": myGETParam.idTitle,
+                    "idMedia": myGETParam.idMedia,
                     "idCategory": myGETParam.cat
                 },
                 success: function (result) {
@@ -49,13 +130,14 @@ $(document).ready(function () {
         })
         
     }
-    function loadChartCallback() {
+    function loadChartCallback(idMedia) {
         let getChartData = new Promise(function (resolve, reject) {
             $.ajax({
                 url: "backend/backend.php",
                 type: "GET",
                 data: {
                     "methodName": "getAllRefsByTitleId",
+                    "idMedia" : idMedia
                 },
                 success: function (result) {
                     resolve(result);
@@ -67,12 +149,12 @@ $(document).ready(function () {
             });
         });
         getChartData.then(function (data) {
-            drawChart(data);
+            drawChart(data, idMedia);
          //   MainNodes = data;
         });
     }
 
-    function drawChart(dataArray) {
+    function drawChart(dataArray, idMedia) {
 
         var chartData = [];
         for (var k of dataArray) {
@@ -105,9 +187,8 @@ $(document).ready(function () {
         var refChart = new google.visualization.PieChart(document.getElementById(refChartId));
         refChart.draw(refChartData, refChartOptions);
         google.visualization.events.addListener(refChart, 'select', function () {
-            manageChartCLick(refChart, dataArray);
+            manageChartCLick(refChart, dataArray, idMedia);
         });
-
     }
     String.prototype.format = function () {
         a = this;

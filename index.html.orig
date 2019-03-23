@@ -2,8 +2,8 @@
 <html lang="fr">
 
     <head>
-        <title>SekeKiKoi</title>
-
+        <title>Sekikikoi</title>
+        <link rel="stylesheet" href="css/sekikikoi.css">
         <link rel="stylesheet" href="vendors/bootstrap-4.3.1-dist/css/bootstrap.css">
         <link rel="stylesheet" href="vendors/smoothState/pageTransitions.css">
         <link rel="stylesheet" href="vendors/smoothState/keyframes.css">
@@ -19,12 +19,13 @@
 
                     <nav class="navbar navbar-expand-md fixed-top container-fluid bg-dark no-padding" style="background-color: whitesmoke">
                         <div class="row">
-                            <div class="col-12">
-                                <img class="d-block mx-auto" id="imgTitle" height="80" src="img/title.png" alt=""/> 
-
-                            </div>
-                            <div class="col-12" style="height: 0px;">
-                                <iframe id="music-player" src="https://open.spotify.com/embed/track/66ZtqKhYSA8XyPr0aAUFsm" data-mce-fragment="1"></iframe>
+                        <a href="./index.html?&idMedia=1">
+                             <div class="col-12 text-center" style="font-size: 80px ;color: rgb(230,0,150); height: 88px">
+                          Sekikikoi
+                                
+                        </div></a>
+                            <div id="musicPlayerDiv" class="col-12" style="height: 0px;">
+                                <iframe id="music-player" src="" data-mce-fragment="1"></iframe>
                             </div>
                         </div>
                     </nav>
@@ -34,8 +35,8 @@
                                 <div id="refChart" style="width: 100vw; min-height:400px;"></div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-4"><button onclick="playShazam()" type="button" class="btn btn-outline-info d-block mx-auto"><img src="img/shazamicon.png" width="30" /></button></div>
+                        <div class="row" id="btn-footer">
+                            <div class="col-4"><button id="btnShazam" type="button" class="btn btn-outline-info d-block mx-auto"><img src="img/shazamicon.png" width="30" /></button></div>
                             <div class="col-4"><button onclick="playSpotify()" type="button" class="btn btn-outline-success d-block mx-auto"><img src="img/spotifyicon.png" width="30" /></button></div>
                             <div class="col-4"><button onclick="playC3()" type="button" class="btn btn-outline-danger d-block mx-auto"><img src="img/c3icon.png" width="30" /></button></div>
                             </div>
@@ -62,67 +63,7 @@
         <script type="text/javascript" src="./sekikikoi.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script>
-<<<<<<< HEAD
-                                function playC3()
-                                {
-                                    var auto = "&autoplay=true";
-                                    if (oui.src.includes(auto))
-                                    {
-                                        oui.src = oui.src.replace("&autoplay=true", "");
-                                    } else
-                                    {
-                                        console.log("auto");
-                                        oui.src += auto;
-                                    }
-                                }
-                                function playSpotify()
-                                {
-                                }
-=======
-            var idShazam = "#shazamContainer";
-            var idC3 = "#c3Container";
-            var idSpotify = "#spotifyContainer";
 
-            function playC3()
-            {
-                $(idShazam).hide();
-                $(idC3).show();
-                $(idSpotify).hide();
-                var auto = "&autoplay=true";
-                if (oui.src.includes(auto))
-                {
-                    oui.src = oui.src.replace("&autoplay=true", "");
-                } else
-                {
-                    console.log("auto");
-                    oui.src += auto;
-                }
-            }
-
-            function playSpotify()
-            {
-                $(idShazam).hide();
-                $(idC3).hide();
-                $(idSpotify).show();
-                $.ajax({
-                    url: "backend/genius.php",
-                    success: function (result) {
-                        console.log(result);
-                    }});
-            }
-
-            function playShazam()
-            {
-                $(idShazam).show();
-                $(idC3).hide();
-                $(idSpotify).hide();
-                $.ajax({
-                    url: "backend/genius.php",
-                    success: function (result) {
-                        console.log(result);
-                    }});
-            }
->>>>>>> 3 buttons continuity
         </script>
     </body>
 </html>

@@ -8,7 +8,6 @@ header('Content-type: application/json');
 
 $methodeName = null;
 $titleName = 'étoile';
-$titleId = 1; //make getter
 
 /**
  * Description : Get the name of the methode to call and the title to search
@@ -16,15 +15,20 @@ $titleId = 1; //make getter
 if (isset($_GET["methodName"])) {
     $methodeName = $_GET["methodName"];
 
-    // if(isset($_GET["title"])){
-    //  $titleName = $_GET["title"];
+
+    ;
     if ($methodeName == "getTitleByName") {
         echo getTitleByName($titleName);
     }
-    //}
+
+    if ($methodeName == "getTitleById") {
+        $titleId = $_GET["idMedia"];
+        echo getTitleById($titleId);
+    }
 
     if ($methodeName == "getAllRefsByTitleId") {
-        echo getAllRefsByTitleId($titleId);
+        $idMedia = $_GET["idMedia"];
+        echo getAllRefsByTitleId($idMedia);
     }
 
     if ($methodeName == "getReferencesForTitle") {
@@ -33,6 +37,21 @@ if (isset($_GET["methodName"])) {
         echo getReferencesForTitle($idMedia, $idCategory);
     }
 }
+
+function getTitleById($idTitle) {
+    $pdoStmt = EDatabase::prepare("
+        SELECT *
+        FROM `media`
+        WHERE id_media = :idTitle
+        ");
+    $pdoStmt->bindParam(':idTitle', $idTitle, PDO::PARAM_INT);
+
+    $pdoStmt->execute();
+    $mainInfo = $pdoStmt->fetchAll(PDO::FETCH_ASSOC)[0];
+
+    return json_encode($mainInfo);
+}
+
 
 /**
  * @name : the name of the title
@@ -68,7 +87,7 @@ function getAllRefsByTitleId($idMedia) {
         FROM `reference`, `media`, `category`
         WHERE id_media_ref = id_media
         AND media.id_category = category.id_category
-        AND `id_media_base` = 1
+        AND `id_media_base` = :idMedia
         GROUP BY (category.id_category)
     ");
     $pdoStmt->bindParam(':idMedia', $idMedia, PDO::PARAM_INT);
