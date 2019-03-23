@@ -151,7 +151,7 @@ $(document).ready(function () {
             '<div class="row">',
             '<div class="col-12">',
             ' <div class="card card-image" style="background-color: rgba(255, 0, 0, 0.1);">',
-            '<div class="py-5 px-4">',
+            '<div class="py-2 px-2">',
             '<div class="row d-flex justify-content-center">',
             '<div class="col-md-10 col-xl-8">',
             '<div id="accordion">',
