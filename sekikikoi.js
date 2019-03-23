@@ -54,7 +54,7 @@ $(document).ready(function () {
     function initIndexPage() {
         var indexParam = getGetParamFromJs();
 
-        if(!indexParam){
+        if(indexParam == ""){
             indexParam = {"idMedia":"1"};//default IAM Nés sous la même étoile
         }
 

@@ -17,7 +17,6 @@ define("DB_NAME","sekikikoi");
 define("DB_USER","sekikikoi_admin");
 define("DB_PASS","Super");
 
-
 /**
  * Retourne un objet PDO connecté à la base de données
  * @return \PDO
