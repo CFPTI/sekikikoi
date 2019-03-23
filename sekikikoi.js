@@ -164,7 +164,7 @@ $(document).ready(function () {
             legend: "none",
             title: '',
             pieSliceText: 'label',
-            fontSize: 26,
+            fontSize: 23,
             colors: ['#CC0066', '#CC3399', '#CC66CC', '#99FF00'],
             animation: {
                 duration: 1000,
