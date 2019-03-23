@@ -35,11 +35,20 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-4"><button type="button" class="btn btn-outline-info d-block mx-auto"><img src="img/shazamicon.png" width="30" /></button></div>
-                            <div class="col-4"><button type="button" class="btn btn-outline-success d-block mx-auto"><img src="img/spotifyicon.png" width="30" /></button></div>
+                            <div class="col-4"><button onclick="playShazam()" type="button" class="btn btn-outline-info d-block mx-auto"><img src="img/shazamicon.png" width="30" /></button></div>
+                            <div class="col-4"><button onclick="playSpotify()" type="button" class="btn btn-outline-success d-block mx-auto"><img src="img/spotifyicon.png" width="30" /></button></div>
                             <div class="col-4"><button onclick="playC3()" type="button" class="btn btn-outline-danger d-block mx-auto"><img src="img/c3icon.png" width="30" /></button></div>
-                            <iframe id="oui" src="https://player.rts.ch/p/rts/portal-detail?urn=urn%3Arts%3Aaudio%3A3262363&amp&amp;"></iframe>
-                            <iframe src="https://open.spotify.com/embed/album/14p5CVdJCMRcgvICDAGS7k?si=45TbYWgGSKCyqmR1D8DWLw" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                            </div>
+                        <div class="row">
+                            <div id="shazamContainer" class="col-12" style="display: none;">
+                                <iframe id="shazam" class="iframe-content" src="https://www.shazam.com/"></iframe>
+                            </div>
+                            <div id="spotifyContainer" class="col-12" style="display: none;">
+                                <iframe class="iframe-content" src="https://open.spotify.com/embed/album/14p5CVdJCMRcgvICDAGS7k?si=45TbYWgGSKCyqmR1D8DWLw" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                            </div>
+                            <div id="c3Container" class="col-12" style="display: none;">
+                                <iframe id="oui" class="iframe-content" src="https://player.rts.ch/p/rts/portal-detail?urn=urn%3Arts%3Aaudio%3A3262363&amp&amp;"></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -53,21 +62,49 @@
         <script type="text/javascript" src="./sekikikoi.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script>
-                                function playC3()
-                                {
-                                    var auto = "&autoplay=true";
-                                    if (oui.src.includes(auto))
-                                    {
-                                        oui.src = oui.src.replace("&autoplay=true", "");
-                                    } else
-                                    {
-                                        console.log("auto");
-                                        oui.src += auto;
-                                    }
-                                }
-                                function playSpotify()
-                                {
-                                }
+            var idShazam = "#shazamContainer";
+            var idC3 = "#c3Container";
+            var idSpotify = "#spotifyContainer";
+
+            function playC3()
+            {
+                $(idShazam).hide();
+                $(idC3).show();
+                $(idSpotify).hide();
+                var auto = "&autoplay=true";
+                if (oui.src.includes(auto))
+                {
+                    oui.src = oui.src.replace("&autoplay=true", "");
+                } else
+                {
+                    console.log("auto");
+                    oui.src += auto;
+                }
+            }
+
+            function playSpotify()
+            {
+                $(idShazam).hide();
+                $(idC3).hide();
+                $(idSpotify).show();
+                $.ajax({
+                    url: "backend/genius.php",
+                    success: function (result) {
+                        console.log(result);
+                    }});
+            }
+
+            function playShazam()
+            {
+                $(idShazam).show();
+                $(idC3).hide();
+                $(idSpotify).hide();
+                $.ajax({
+                    url: "backend/genius.php",
+                    success: function (result) {
+                        console.log(result);
+                    }});
+            }
         </script>
     </body>
 </html>
