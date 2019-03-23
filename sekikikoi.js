@@ -7,8 +7,7 @@ $(document).ready(function () {
 
     function playC3()
     {
-
-
+        window.location = "./index.html?&idMedia=27";
         /* $(idShazam).hide();
          $(idC3).show();
          $(idSpotify).hide();
@@ -25,14 +24,15 @@ $(document).ready(function () {
 
     function playSpotify()
     {
-        $(idShazam).hide();
+        window.location = "./index.html?&idMedia=1";
+      /*  $(idShazam).hide();
         $(idC3).hide();
         $(idSpotify).show();
         $.ajax({
             url: "backend/genius.php",
             success: function (result) {
                 console.log(result);
-            }});
+            }});*/
     }
 
     function playShazam()
@@ -48,6 +48,8 @@ $(document).ready(function () {
              }});*/
     }
     $("#btnShazam").click(playShazam);
+    $("#btnSpotify").click(playSpotify);
+    $("#btnC3").click(playC3);
 
     function initIndexPage() {
         var indexParam = getGetParamFromJs();
