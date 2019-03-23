@@ -39,4 +39,7 @@ body { padding-top: 184px; }
 }
 .item-card .card-body {
     background-color : none;
-}  
+}
+.iframe-content{
+    width: 100%;
+}

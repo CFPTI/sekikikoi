@@ -3,10 +3,11 @@
 
     <head>
         <title>SekeKiKoi</title>
-        <link rel="stylesheet" href="css/sekikikoi.css">
+
         <link rel="stylesheet" href="vendors/bootstrap-4.3.1-dist/css/bootstrap.css">
         <link rel="stylesheet" href="vendors/smoothState/pageTransitions.css">
         <link rel="stylesheet" href="vendors/smoothState/keyframes.css">
+        <link rel="stylesheet" href="css/sekikikoi.css">
         <meta http-equiv="Content-Type" content="text/html,charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     </head>
@@ -15,42 +16,40 @@
         <div class="m-scene no-padding" id="wrapper">
             <div class="m-detail-layout">
                 <div class="m-aside scene_element scene_element--fadeinright">
-<<<<<<< HEAD
-                    <nav class="sekikikoi-nav navbar navbar-expand-md fixed-top container-fluid bg-dark" style="background-color: whitesmoke">
+
+                    <nav class="navbar navbar-expand-md fixed-top container-fluid bg-dark no-padding" style="background-color: whitesmoke">
                         <div class="row">
                             <div class="col-12">
                                 <img class="d-block mx-auto" id="imgTitle" height="80" src="img/title.png" alt=""/> 
 
                             </div>
                             <div class="col-12" style="height: 0px;">
-                                <iframe id="music-player" src="https://open.spotify.com/embed/track/66ZtqKhYSA8XyPr0aAUFsm" frameborder="0" data-mce-fragment="1"></iframe>
+                                <iframe id="music-player" src="https://open.spotify.com/embed/track/66ZtqKhYSA8XyPr0aAUFsm" data-mce-fragment="1"></iframe>
                             </div>
+                        </div>
                     </nav>
-                    <div class="container-fluid" id="sekikikoiApp">
-                        <h1 class="text-center">SEKIKIKOI ?</h1>
-                        <div id="refChart" style="width: 900px; height: 500px;"></div>
-                        <nav>
-
-                            <!--j'ai la flemme de la faire comme il faut alors en dur-->
-                            <a href="detailCine.html">Ciné</a>
-                            <a href="detailPolitique.html">Politique</a>
-                            <a href="detailMusique.html">Musique</a>
-                        </nav>
-=======
-                    <nav class="sekikikoi-nav no-padding navbar navbar-expand-md fixed-top container-fluid bg-dark" style="background-color: whitesmoke">
+                    <div class="container-fluid">
                         <div class="row">
-                            <div class="col-12">
-                                <img class="d-block mx-auto" id="imgTitle" height="80" src="img/title.png" alt=""/>
+                            <div class="col-12 no-padding">
+                                <div id="refChart" style="width: 100vw; min-height:400px;"></div>
                             </div>
                         </div>
-                    </nav>
-                    <div class="container-fluid no-padding">
-                        <div class="col-md-12 no-padding">
-                            <iframe id="music-player" src="https://open.spotify.com/embed/track/66ZtqKhYSA8XyPr0aAUFsm" frameborder="0" data-mce-fragment="1"></iframe>
-                            <h1 class="text-center">SEKIKIKOI ?</h1>
-                            <div id="refChart" style="width: 100%; min-height: 450px"></div>
+                        <div class="row">
+                            <div class="col-4"><button onclick="playShazam()" type="button" class="btn btn-outline-info d-block mx-auto"><img src="img/shazamicon.png" width="30" /></button></div>
+                            <div class="col-4"><button onclick="playSpotify()" type="button" class="btn btn-outline-success d-block mx-auto"><img src="img/spotifyicon.png" width="30" /></button></div>
+                            <div class="col-4"><button onclick="playC3()" type="button" class="btn btn-outline-danger d-block mx-auto"><img src="img/c3icon.png" width="30" /></button></div>
+                            </div>
+                        <div class="row">
+                            <div id="shazamContainer" class="col-12" style="display: none;">
+                                <iframe id="shazam" class="iframe-content" src="https://www.shazam.com/"></iframe>
+                            </div>
+                            <div id="spotifyContainer" class="col-12" style="display: none;">
+                                <iframe class="iframe-content" src="https://open.spotify.com/embed/album/14p5CVdJCMRcgvICDAGS7k?si=45TbYWgGSKCyqmR1D8DWLw" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                            </div>
+                            <div id="c3Container" class="col-12" style="display: none;">
+                                <iframe id="oui" class="iframe-content" src="https://player.rts.ch/p/rts/portal-detail?urn=urn%3Arts%3Aaudio%3A3262363&amp&amp;"></iframe>
+                            </div>
                         </div>
->>>>>>> Responsive index
                     </div>
                 </div>
             </div>
@@ -62,5 +61,68 @@
         <script type="text/javascript" src="./transition.js"></script>
         <script type="text/javascript" src="./sekikikoi.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script>
+<<<<<<< HEAD
+                                function playC3()
+                                {
+                                    var auto = "&autoplay=true";
+                                    if (oui.src.includes(auto))
+                                    {
+                                        oui.src = oui.src.replace("&autoplay=true", "");
+                                    } else
+                                    {
+                                        console.log("auto");
+                                        oui.src += auto;
+                                    }
+                                }
+                                function playSpotify()
+                                {
+                                }
+=======
+            var idShazam = "#shazamContainer";
+            var idC3 = "#c3Container";
+            var idSpotify = "#spotifyContainer";
+
+            function playC3()
+            {
+                $(idShazam).hide();
+                $(idC3).show();
+                $(idSpotify).hide();
+                var auto = "&autoplay=true";
+                if (oui.src.includes(auto))
+                {
+                    oui.src = oui.src.replace("&autoplay=true", "");
+                } else
+                {
+                    console.log("auto");
+                    oui.src += auto;
+                }
+            }
+
+            function playSpotify()
+            {
+                $(idShazam).hide();
+                $(idC3).hide();
+                $(idSpotify).show();
+                $.ajax({
+                    url: "backend/genius.php",
+                    success: function (result) {
+                        console.log(result);
+                    }});
+            }
+
+            function playShazam()
+            {
+                $(idShazam).show();
+                $(idC3).hide();
+                $(idSpotify).hide();
+                $.ajax({
+                    url: "backend/genius.php",
+                    success: function (result) {
+                        console.log(result);
+                    }});
+            }
+>>>>>>> 3 buttons continuity
+        </script>
     </body>
 </html>
